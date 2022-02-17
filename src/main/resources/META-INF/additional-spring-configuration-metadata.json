@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "spring.kafka.host",
+      "type": "java.lang.String",
+      "description": "Description for spring.kafka.host."
+    },
+    {
+      "name": "spring.kafka.port",
+      "type": "java.lang.String",
+      "description": "Description for spring.kafka.port."
+    }
+  ] }

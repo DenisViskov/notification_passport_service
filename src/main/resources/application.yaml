@@ -1,0 +1,7 @@
+spring:
+    kafka:
+      host: localhost
+      port: 9092
+      consumer:
+        group-id: app.1
+      bootstrap-servers: ${spring.kafka.host}:${spring.kafka.port}
