@@ -9,5 +9,10 @@
       "name": "spring.kafka.port",
       "type": "java.lang.String",
       "description": "Description for spring.kafka.port."
+    },
+    {
+      "name": "spring.kafka.topic",
+      "type": "java.lang.String",
+      "description": "Description for spring.kafka.topic."
     }
   ] }

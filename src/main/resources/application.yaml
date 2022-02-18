@@ -5,3 +5,4 @@ spring:
       consumer:
         group-id: app.1
       bootstrap-servers: ${spring.kafka.host}:${spring.kafka.port}
+      topic: notify
