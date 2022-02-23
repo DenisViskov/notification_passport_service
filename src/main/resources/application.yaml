@@ -5,10 +5,5 @@ spring:
       consumer:
         group-id: app.1
         auto-offset-reset: earliest
-        properties:
-          spring.json.trusted.packages: "*"
       bootstrap-servers: ${spring.kafka.host}:${spring.kafka.port}
       topic: notify
-logging:
-    level:
-      org.apache.kafka.*: DEBUG
