@@ -1,0 +1,10 @@
+spring:
+    kafka:
+      host: localhost
+      port: 9092
+      consumer:
+        group-id: app.1
+        auto-offset-reset: earliest
+      bootstrap-servers: ${spring.kafka.host}:${spring.kafka.port}
+      topic: notify
+      typeMapping: dto:com.example.notification_passport_service.dto.ExpiredPassportDto
