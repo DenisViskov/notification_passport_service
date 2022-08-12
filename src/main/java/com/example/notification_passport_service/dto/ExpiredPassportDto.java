@@ -12,12 +12,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ExpiredPassportDto {
-
     private Long id;
-
     private Long serial;
-
     private Long number;
-
     private Date expiredDate;
 }
