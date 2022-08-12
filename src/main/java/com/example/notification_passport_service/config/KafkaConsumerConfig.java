@@ -1,9 +1,10 @@
 package com.example.notification_passport_service.config;
 
 import com.example.notification_passport_service.dto.ExpiredPassportDto;
+import lombok.AllArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.LongDeserializer;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -17,13 +18,11 @@ import java.util.Map;
 
 @EnableKafka
 @Configuration
+@AllArgsConstructor
 public class KafkaConsumerConfig {
 
-    @Value("${spring.kafka.bootstrap-servers}")
-    private String kafkaServer;
-
-    @Value("${spring.kafka.consumer.group-id}")
-    private String kafkaGroupId;
+    @Autowired
+    private final KafkaConfigurationProperties kafkaConfigurationProperties;
 
     @Bean
     public KafkaListenerContainerFactory<?> kafkaListenerContainerFactory() {
@@ -40,10 +39,11 @@ public class KafkaConsumerConfig {
 
     private Map<String, Object> consumerConfigs() {
         return Map.of(
-            ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServer,
+            ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaConfigurationProperties.getBootstrapServers(),
             ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, LongDeserializer.class,
             ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class,
-            ConsumerConfig.GROUP_ID_CONFIG, kafkaGroupId,
+            ConsumerConfig.GROUP_ID_CONFIG, kafkaConfigurationProperties.getConsumer().getGroupId(),
+            JsonDeserializer.TYPE_MAPPINGS, kafkaConfigurationProperties.getTypeMapping(),
             JsonDeserializer.TRUSTED_PACKAGES, "*"
         );
     }
